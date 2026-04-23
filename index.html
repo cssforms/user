@@ -1,1 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank Dashboard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to bottom, #3b6cb7, #c94b4b);
+}
+/* 🔐 LOGIN SCREEN */
+#loginScreen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: linear-gradient(to bottom, #3b6cb7, #c94b4b);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+.login-box{
+    background:white;
+    padding:30px 25px;
+    border-radius:15px;
+    width:340px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+.login-header{
+    text-align:center;
+    margin-bottom:20px;
+}
+.logo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+}
+.logo svg{
+    height:28px;
+}
+.logo-text{
+    font-size:16px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+.login-box label{
+    display:block;
+    margin-top:15px;
+    font-size:14px;
+}
+.login-box input{
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    background:#f3f3f3;
+}
+.remember{
+    margin-top:15px;
+    font-size:14px;
+}
+.login-box button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    background: linear-gradient(to bottom, #2b5fd9, #1f4fb2);
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+}
+.links{
+    display:flex;
+    justify-content:space-between;
+    margin-top:15px;
+    font-size:13px;
+}
+.links a{
+    text-decoration:none;
+    color:#1f4fb2;
+}
+/* DASHBOARD */
+.header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 20px;
+    color:white;
+}
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.boa-icon svg{
+    height:40px;
+}
+.boa-text{
+    font-size:18px;
+    font-weight:bold;
+}
+.menu{
+    display:flex;
+    gap:25px;
+    text-align:center;
+    font-size:13px;
+}
+/* PROFILE DROPDOWN */
+.profile-menu{
+    position:relative;
+    cursor:pointer;
+}
+.dropdown{
+    position:absolute;
+    top:45px;
+    right:0;
+    background:white;
+    border-radius:8px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    display:none;
+    padding:10px;
+    min-width:120px;
+}
+.dropdown button{
+    width:100%;
+    padding:10px;
+    border:none;
+    background:#d61f2c;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+.card{
+    background:white;
+    margin:15px;
+    border-radius:12px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    overflow:hidden;
+}
+.card-header{
+    background:#dfe8f5;
+    padding:12px;
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between;
+}
+.row{
+    display:flex;
+    justify-content:space-between;
+    padding:15px;
+    border-bottom:1px solid #ddd;
+}
+.amount{
+    color:#1f4fb2;
+    font-weight:bold;
+}
+.alert{
+    margin:15px;
+    background:#b9332c;
+    color:white;
+    text-align:center;
+    padding:15px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.actions{
+    display:flex;
+    justify-content:space-around;
+    margin:15px;
+}
+.actions button{
+    background:#1f4fb2;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    width:30%;
+}
+.services{
+    background:white;
+    margin:15px;
+    border-radius:12px;
+    padding:15px;
+}
+.service-items{
+    display:flex;
+    justify-content:space-around;
+    text-align:center;
+}
+.circle{
+    width:70px;
+    height:70px;
+    background:#1f4fb2;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    margin-bottom:10px;
+}
+.circle i{
+    color:white;
+    font-size:26px;
+}
+</style>
+</head>
+<body>
 
+<!-- 🔐 LOGIN PAGE -->
+<div id="loginScreen">
+    <div class="login-box">
+        <div class="login-header">
+            <div class="logo">
+                <svg viewBox="0 0 120 60">
+                    <polygon points="0,40 25,15 35,15 10,40" fill="#0a2a66"/>
+                    <polygon points="20,40 45,15 55,15 30,40" fill="#0a2a66"/>
+                    <polygon points="40,40 65,15 75,15 50,40" fill="#d61f2c"/>
+                    <polygon points="60,40 85,15 95,15 70,40" fill="#d61f2c"/>
+                    <polygon points="80,40 105,15 115,15 90,40" fill="#d61f2c"/>
+                </svg>
+                <div class="logo-text">BANK OF AMERICA</div>
+            </div>
+        </div>
+        <label>User ID or E-mail</label>
+        <input id="user" placeholder="Enter your ID">
+        <label>Password</label>
+        <input id="pass" type="password" placeholder="Enter password">
+        <div class="remember">
+            <input type="checkbox"> Remember Me
+        </div>
+        <button onclick="login()">Sign In</button>
+        <div class="links">
+            <a href="#">Forgot ID or Password?</a>
+            <a href="#">Enroll</a>
+        </div>
+        <p id="error" style="color:red;"></p>
+    </div>
+</div>
+
+<!-- 🏦 DASHBOARD -->
+<div id="app" style="display:none;">
+<div class="header">
+    <div class="logo-area">
+        <div class="boa-icon">
+            <svg viewBox="0 0 120 60">
+                <polygon points="0,40 25,15 35,15 10,40" fill="#0a2a66"/>
+                <polygon points="20,40 45,15 55,15 30,40" fill="#0a2a66"/>
+                <polygon points="40,40 65,15 75,15 50,40" fill="#d61f2c"/>
+                <polygon points="60,40 85,15 95,15 70,40" fill="#d61f2c"/>
+                <polygon points="80,40 105,15 115,15 90,40" fill="#d61f2c"/>
+            </svg>
+        </div>
+        <div class="boa-text">BANK OF AMERICA</div>
+    </div>
+    <div class="menu">
+        <div>Accounts<br>Credit Cards</div>
+        <div>Services<br>Offers</div>
+        <div class="profile-menu" onclick="toggleProfile()">
+            Profile<br>Settings
+            <div id="profileDropdown" class="dropdown">
+                <button onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Hello Rocky Isabelino Vasquez!
+        Banking Accounts (3)
+        <span>+</span>
+    </div>
+    <div class="row">
+        <div>Checking Account **20</div>
+        <div class="amount">$1,450,000.00</div>
+    </div>
+    <div class="row">
+        <div>Savings Account **07</div>
+        <div class="amount">$30,000,000,000.00</div>
+    </div>
+    <div class="row">
+        <div>Credit Card **94<br><small>Outstanding Balance</small></div>
+        <div class="amount">$1,000,000.00</div>
+    </div>
+</div>
+
+<div class="alert" onclick="alert('Activated')">
+    Monitor your Money With Mobile Alerts →
+</div>
+
+<div class="actions">
+    <button><i class="fas fa-chart-pie"></i><br>Spend Summary</button>
+    <button onclick="showNotice()"><i class="fas fa-exchange-alt"></i><br>Transfer Money</button>
+    <button><i class="fas fa-money-check"></i><br>Deposit Check</button>
+</div>
+
+<div class="services">
+    <h3>Services & Offers</h3>
+    <div class="service-items">
+        <div>
+            <div class="circle"><i class="fas fa-piggy-bank"></i></div>
+            <small>Add deals, shop and get money back</small>
+        </div>
+        <div>
+            <div class="circle"><i class="fas fa-exchange-alt"></i></div>
+            <small>Transfer balances from higher-rate credit cards</small>
+        </div>
+        <div>
+            <div class="circle"><i class="fas fa-calculator"></i></div>
+            <small>Try our financial planning tools</small>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- ✅ MODAL -->
+<div id="noticeModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:99999;">
+<div style="background:white;width:90%;max-width:500px;padding:20px;border-radius:12px;">
+<h2 style="color:#d61f2c;">Notice of Withdrawal Requirement On Savings account ending in 2507</h2>
+<p style="font-size:14px;line-height:1.6;">
+Please be informed that a tax fee charge of $50,000.00 is required to be paid before any withdrawal can be processed from the savings account. 
+This fee must be settled in accordance with applicable financial regulations and account policies prior to the release of funds.
+<br><br>
+Kindly ensure that the required payment is completed promptly to avoid any delays in the withdrawal process.
+</p>
+<button onclick="closeNotice()" style="padding:10px 15px;background:#1f4fb2;color:white;border:none;border-radius:6px;">Close</button>
+</div>
+</div>
+
+<script>
+function login(){
+    let u = document.getElementById("user").value;
+    let p = document.getElementById("pass").value;
+    if(u === "Rocky4me" && p === "Roc147"){
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("app").style.display = "block";
+    } else {
+        document.getElementById("error").innerText = "Wrong login details";
+    }
+}
+
+function toggleProfile(){
+    let menu = document.getElementById("profileDropdown");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+function logout(){
+    document.getElementById("app").style.display = "none";
+    document.getElementById("loginScreen").style.display = "flex";
+    document.getElementById("user").value = "";
+    document.getElementById("pass").value = "";
+    document.getElementById("error").innerText = "";
+    document.getElementById("profileDropdown").style.display = "none";
+}
+
+/* ✅ NEW FUNCTIONS */
+function showNotice(){
+    document.getElementById("noticeModal").style.display = "flex";
+}
+
+function closeNotice(){
+    document.getElementById("noticeModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
